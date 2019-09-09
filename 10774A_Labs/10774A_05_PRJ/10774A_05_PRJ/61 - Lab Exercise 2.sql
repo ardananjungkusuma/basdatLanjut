@@ -20,9 +20,9 @@ GO
 ---------------------------------------------------------------------
 
 SELECT 
-	custid, contactname, orderid
-FROM Sales.Customers  
-INNER JOIN Sales.Orders ON Customers.custid = Orders.custid;
+	sc.custid, contactname, orderid
+FROM Sales.Customers  sc
+INNER JOIN Sales.Orders ON sc.custid = Orders.custid;
 
 
 
