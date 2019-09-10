@@ -7,9 +7,9 @@
 USE TSQL;
 GO
 
-Select p.productname, c.categoryname 
+Select p.productname, c.categoryname
 from Production.Products p 
-join Production.Categories c on p.productid = c.categoryid;
+join Production.Categories c on p.categoryid = c.categoryid;
 
 -------------------------------------------------------------------
 -- Task 1

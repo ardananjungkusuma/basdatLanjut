@@ -19,12 +19,21 @@ GO
 -- You get an error. What is the error message? Why do you think you got this error? 
 ---------------------------------------------------------------------
 
-SELECT 
-	sc.custid, contactname, orderid
-FROM Sales.Customers  sc
-INNER JOIN Sales.Orders ON sc.custid = Orders.custid;
+--SELECT 
+--	sc.custid, contactname, orderid
+--FROM Sales.Customers  sc
+--INNER JOIN Sales.Orders o ON sc.custid = o.custid;
 
 
+--select c.custid, c.contactname, o.orderid
+--from Sales.Customers as c
+--inner join Sales.Orders as o on c.custid = o.custid;
+
+select c.custid, c.contactname, o.orderid, 
+od.productid, od.qty, od.unitprice
+from Sales.Customers as c
+inner join Sales.Orders as o on c.custid = o.custid
+inner join Sales.OrderDetails as od on o.orderid = od.orderid;
 
 
 ---------------------------------------------------------------------
