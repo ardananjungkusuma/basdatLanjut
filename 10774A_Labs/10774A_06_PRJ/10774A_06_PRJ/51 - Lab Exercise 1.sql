@@ -28,7 +28,9 @@ where country in (N'Brazil',N'UK',N'USA');
 -- Execute the written statement and compare the results that you got with the desired results shown in the file 53 - Lab Exercise 1 - Task 2 Result.txt.
 ---------------------------------------------------------------------
 
-
+SELECT?custid, companyname, contactname, address, city, country, phone
+FROM Sales.Customers
+WHERE contactname LIKE N'A%';
 
 ---------------------------------------------------------------------
 -- Task 3
