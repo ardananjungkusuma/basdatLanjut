@@ -28,9 +28,11 @@ where country in (N'Brazil',N'UK',N'USA');
 -- Execute the written statement and compare the results that you got with the desired results shown in the file 53 - Lab Exercise 1 - Task 2 Result.txt.
 ---------------------------------------------------------------------
 
-SELECT?custid, companyname, contactname, address, city, country, phone
+SELECT?custid, companyname, contactname, address, 
+city, country, phone
 FROM Sales.Customers
 WHERE contactname LIKE N'A%';
+
 
 ---------------------------------------------------------------------
 -- Task 3
@@ -55,6 +57,12 @@ WHERE contactname LIKE N'A%';
 --
 -- Is the result the same as in the first T-SQL statement? Why? What is the difference between specifying the predicate in the ON clause and in the WHERE clause?
 ---------------------------------------------------------------------
+SELECT?custid, companyname, contactname, address, 
+city, country, phone
+FROM Sales.Customers
+WHERE city LIKE N'A%';
+
+
 
 SELECT
 	c.custid, c.companyname, o.orderid
@@ -70,3 +78,57 @@ LEFT OUTER JOIN Sales.Orders AS o ON c.custid = o.custid AND c.city = 'Paris';
 -- Execute the written statement and compare the results that you got with the desired results shown in the file 56 - Lab Exercise 1 - Task 5 Result.txt.
 ---------------------------------------------------------------------
 
+select c.custid,c.companyname
+from Sales.Customers c
+left outer join Sales.Orders o
+on c.custid=o.custid
+where o.custid is null;
+
+select c.custid, c.contactname, o.orderid,o.orderdate
+from Sales.Customers c 
+inner join Sales.Orders o
+on c.custid = o.custid
+order by orderdate desc,custid desc
+offset 742 rows;
+
+SELECT
+e.empid, e.lastname, e.firstname, e.title, e.mgrid,
+m.lastname AS mgrlastname, m.firstname AS mgrfirstname
+FROM HR.Employees AS e
+INNER JOIN HR.Employees AS m ON e.mgrid = m.empid
+WHERE
+mgrlastname = N'Buck';
+
+SELECT e.empid, e.lastname, e.firstname, 
+e.title, e.mgrid, m.lastname AS mgrlastname,
+m.firstname AS mgrfirstname
+FROM HR.Employees AS e?INNER JOIN HR.Employees AS m ON e.mgrid = m.empid
+WHERE m.lastname = N'Buck';
+
+SELECT?e.empid, e.lastname, e.firstname, e.title, 
+e.mgrid, m.lastname AS mgrlastname,m.firstname AS mgrfirstname
+FROM HR.Employees AS e
+INNER JOIN HR.Employees AS m 
+ON e.mgrid = m.empid 
+ORDER BY m.firstname;
+
+SELECT?e.empid, e.lastname, e.firstname, e.title, 
+e.mgrid, m.lastname AS mgrlastname,m.firstname AS mgrfirstname
+FROM HR.Employees AS e
+INNER JOIN HR.Employees AS m 
+ON e.mgrid = m.empid
+ORDER BY mgrfirstname;
+
+select top (20) orderid, orderdate
+from Sales.Orders?order by orderdate desc;??select orderid, orderdate
+from Sales.Orders?order by orderdate desc
+OFFSET 0 rows
+fetch first 20 ROWS ONLY;
+
+select productname, unitprice
+from Production.Products
+order by unitprice desc;
+
+select custid, orderid, orderdate
+from Sales.Orders?order by orderdate, orderid
+offset 20 rows fetch next 20 rows only;
