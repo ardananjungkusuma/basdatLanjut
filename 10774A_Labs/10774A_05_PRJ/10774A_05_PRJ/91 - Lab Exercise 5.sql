@@ -53,6 +53,9 @@ FROM HR.Calendar;
 -- What is the number of rows returned by the query? There are nine rows in the HR.Employees table. Try to calculate the total number of rows in the HR.Calendar table.
 ---------------------------------------------------------------------
 
+select e.empid,e.firstname,e.lastname,c.calendardate
+from HR.Employees e
+cross join HR.Calendar c;
 
 
 ---------------------------------------------------------------------

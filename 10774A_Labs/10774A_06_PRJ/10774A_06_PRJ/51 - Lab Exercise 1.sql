@@ -14,7 +14,10 @@ GO
 --
 -- Execute the written statement and compare the results that you got with the desired results shown in the file 52 - Lab Exercise  Task 1 Result.txt.
 ---------------------------------------------------------------------
-
+select custid,companyname,contactname,address,
+city,country,phone
+from Sales.Customers
+where country in (N'Brazil',N'UK',N'USA');
 
 
 ---------------------------------------------------------------------

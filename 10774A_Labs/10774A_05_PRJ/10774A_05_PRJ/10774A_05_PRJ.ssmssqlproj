@@ -2,19 +2,32 @@
 <SqlWorkbenchSqlProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="10774A_05_PRJ">
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
-      <Items />
+      <Items>
+        <ConnectionNode Name="DESKTOP-CQ8IGUJ:DESKTOP-CQ8IGUJ\Ardan">
+          <Created>2019-09-10T13:33:40.0967646+07:00</Created>
+          <Type>SQL</Type>
+          <Server>DESKTOP-CQ8IGUJ</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB />
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+      </Items>
     </LogicalFolder>
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
         <FileNode Name="51 - Lab Exercise 1.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CQ8IGUJ:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CQ8IGUJ</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>51 - Lab Exercise 1.sql</FullPath>
         </FileNode>
         <FileNode Name="61 - Lab Exercise 2.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CQ8IGUJ:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CQ8IGUJ</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>61 - Lab Exercise 2.sql</FullPath>
         </FileNode>
@@ -25,14 +38,14 @@
           <FullPath>71 - Lab Exercise 3.sql</FullPath>
         </FileNode>
         <FileNode Name="81 - Lab Exercise 4.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CQ8IGUJ:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CQ8IGUJ</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>81 - Lab Exercise 4.sql</FullPath>
         </FileNode>
         <FileNode Name="91 - Lab Exercise 5.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CQ8IGUJ:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CQ8IGUJ</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>91 - Lab Exercise 5.sql</FullPath>
         </FileNode>

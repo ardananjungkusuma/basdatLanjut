@@ -29,11 +29,26 @@ GO
 --from Sales.Customers as c
 --inner join Sales.Orders as o on c.custid = o.custid;
 
-select c.custid, c.contactname, o.orderid, 
+/*select c.custid, c.contactname, o.orderid, 
 od.productid, od.qty, od.unitprice
 from Sales.Customers as c
 inner join Sales.Orders as o on c.custid = o.custid
-inner join Sales.OrderDetails as od on o.orderid = od.orderid;
+inner join Sales.OrderDetails as od on o.orderid = od.orderid;*/
+
+/*select e.empid, e.lastname,e.firstname,e.title,e.mgrid
+from HR.Employees as e
+
+select e.empid,e.lastname,e.firstname,e.title,e.mgrid, mgr.lastname,mgr.firstname
+from HR.Employees as e
+join HR.Employees as mgr 
+on e.mgrid = mgr.empid;
+*/
+
+select c.custid, c.contactname, o.orderid
+from Sales.Customers as c
+full join Sales.Orders as o
+on c.custid = o.custid;
+
 
 
 ---------------------------------------------------------------------

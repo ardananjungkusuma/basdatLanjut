@@ -3,7 +3,19 @@
   <Items>
     <LogicalFolder Name="Connections" Type="2" Sorted="true">
       <Items>
-        <ConnectionNode Name="MENTARI-PC\SQLEXPRESS:MENTARI-PC\TOSHIBA">
+        <ConnectionNode Name="DESKTOP-CQ8IGUJ:DESKTOP-CQ8IGUJ\Ardan">
+          <Created>2019-09-10T17:06:43.2962318+07:00</Created>
+          <Type>SQL</Type>
+          <Server>DESKTOP-CQ8IGUJ</Server>
+          <UserName />
+          <Authentication>Windows Authentication</Authentication>
+          <InitialDB>TSQL</InitialDB>
+          <LoginTimeout>30</LoginTimeout>
+          <ExecutionTimeout>0</ExecutionTimeout>
+          <ConnectionProtocol>NotSpecified</ConnectionProtocol>
+          <ApplicationName>Microsoft SQL Server Management Studio - Query</ApplicationName>
+        </ConnectionNode>
+        <ConnectionNode Name="MENTARI-PC\SQLEXPRESS:DESKTOP-CQ8IGUJ\Ardan">
           <Created>2017-09-27T09:19:56.7664586+07:00</Created>
           <Type>SQL</Type>
           <Server>MENTARI-PC\SQLEXPRESS</Server>
@@ -20,8 +32,8 @@
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
         <FileNode Name="51 - Lab Exercise 1.sql">
-          <AssociatedConnectionMoniker />
-          <AssociatedConnSrvName />
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:DESKTOP-CQ8IGUJ:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>DESKTOP-CQ8IGUJ</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>51 - Lab Exercise 1.sql</FullPath>
         </FileNode>
