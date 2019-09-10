@@ -31,7 +31,7 @@ select p.categoryid, p.productname,
 		when p.categoryid in (1,7,8) then 'Campaign Products'
 		else 'Non-Campaign Products'
 	end as iscampaign
-	from Production.Products AS p;*/
+	from Production.Products AS p;
 
 select p.categoryid as ID_KATEGORI , p.productname as NAMA_PRODUK,
 	CASE
@@ -52,7 +52,7 @@ select p.categoryid as ID_KATEGORI , p.productname as NAMA_PRODUK,
 	from Production.Products as p
 	where p.categoryid=8;
 
-/*select h.firstname as FIRST_NAME,h.lastname as LAST_NAME,h.city 
+select h.firstname as FIRST_NAME,h.lastname as LAST_NAME,h.city 
 as CITY,h.country as COUNTRY from HR.Employees AS h where h.country = 'USA' and h.city = 'Seattle';*/
 
 
