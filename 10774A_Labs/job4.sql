@@ -46,13 +46,18 @@ FROM Sales.Somedates;
 SELECT SYSDATETIME()  as SYS,CURRENT_TIMESTAMP as cur;
 
 --no8
-SELECT custid, orderdate FROM Sales.Orders 
+SELECT DISTINCT custid FROM Sales.Orders 
 where YEAR(orderdate)=2008 and MONTH(orderdate)=2;
 
 --no9
 SELECT CURRENT_TIMESTAMP as currentdate,
-FORMAT (getdate(), '01-09-2019 00:00:00.0000') as firstofmonth,
-FORMAT (getdate(), '30-09-2019 00:00:00.0000') as endofmonth;
+FORMAT (getdate(), '01-09-2019 00:00:00.0000') as firstofmonth,--tambahkan dilaporan ini
+EOMONTH(getdate()) as endofmonth;
 
 --no10
-SELECT o.orderid,o.custid,o.orderdate FROM Sales.Orders as o;
+SELECT o.orderid, o.custid, o.orderdate FROM Sales.Orders AS o 
+WHERE DATEDIFF(DAY, o.orderdate, EOMONTH(o.orderdate)) < 5;
+
+--no11
+SELECT DISTINCT o.productid
+FROM Sales.OrderDetails as o;
