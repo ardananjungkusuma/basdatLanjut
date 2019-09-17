@@ -49,8 +49,6 @@ from Sales.Customers as c
 full join Sales.Orders as o
 on c.custid = o.custid;
 
-
-
 ---------------------------------------------------------------------
 -- Task 2
 -- 
@@ -67,7 +65,7 @@ on c.custid = o.custid;
 ---------------------------------------------------------------------
 -- Task 3
 -- 
--- Copy the T-SQL statement from task 2 and modify it to use the table aliases “C” for the Sales.Custumers table and “O” for the Sales.Orders table.
+-- Copy the T-SQL statement from task 2 and modify it to use the table aliases ï¿½Cï¿½ for the Sales.Custumers table and ï¿½Oï¿½ for the Sales.Orders table.
 --
 -- Execute the written statement and compare the results with the results in task 2.
 --
