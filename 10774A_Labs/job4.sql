@@ -59,5 +59,44 @@ SELECT o.orderid, o.custid, o.orderdate FROM Sales.Orders AS o
 WHERE DATEDIFF(DAY, o.orderdate, EOMONTH(o.orderdate)) < 5;
 
 --no11
-SELECT DISTINCT o.productid
-FROM Sales.OrderDetails as o;
+SELECT DISTINCT odt.productid
+FROM Sales.Orders AS o 
+INNER JOIN Sales.OrderDetails AS odt 
+ON o.orderid = odt.orderid
+WHERE DATEPART(WEEK, o.orderdate) <= 10 AND YEAR(o.orderdate) = 2007;
+
+--no12
+SELECT contactname + (' (City: ') + city + (')') AS contactwithcity
+FROM Sales.Customers;
+
+--no13
+SELECT c.contactname + (' (City: ') + c.city + (', region: ') + 
+COALESCE(c.region, '') + (')') AS contactwithcity
+FROM Sales.Customers AS c
+
+--no14
+SELECT c.contactname, c.contacttitle
+FROM Sales.Customers AS c
+WHERE contactname LIKE '[A-G]%'
+
+--no15
+SELECT REPLACE(c.contactname, ',', ''), 
+SUBSTRING(c.contactname, 0, 
+CHARINDEX(',', c.contactname)) AS lastname
+FROM Sales.Customers AS c
+
+--no16
+SELECT REPLACE(c.contactname, ',', ''), 
+SUBSTRING(c.contactname, CHARINDEX(',', c.contactname) + 2, 
+LEN(c.contactname))
+FROM Sales.Customers AS c
+
+--no17
+SELECT c.custid, 'C' + RIGHT(REPLICATE('0', 5) + 
+CAST(custid AS varchar(5)), 5)
+FROM Sales.Customers AS c
+
+--no18
+SELECT c.contactname, LEN(c.contactname) - 
+LEN(REPLACE(c.contactname, 'A', '')) AS numberofa
+FROM Sales.Customers AS c
