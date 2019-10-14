@@ -67,3 +67,23 @@ FROM Transaksi
 WHERE id_transaksi = 12398241;
 
 select * from Transaksi
+
+--ambil 10 transaksi terakhir descending dan menunjukan nama pembeli
+select top(10) t.id_transaksi,t.tanggal_transaksi,st.id_pelanggan,isnull(p.nama_depan,' ')+' '+isnull(p.nama_belakang,' ') as Nama_Pembeli
+from Transaksi as t
+inner join StrukPembayaran as st on st.id_transaksi = t.id_transaksi
+inner join Pelanggan as p on p.id_pelanggan = st.id_pelanggan
+order by t.tanggal_transaksi desc;
+
+--menselect customer yang tidak pernah membeli
+select isnull(p.nama_depan,' ')+' '+isnull(p.nama_belakang,' ') as nama_pelanggan,sp.id_transaksi
+from Pelanggan as p
+left join StrukPembayaran as sp on sp.id_pelanggan = p.id_pelanggan
+where sp.id_transaksi is null
+
+--pilih 5 data dari data pertama dan limit 5 data.
+select * from Transaksi
+order by id_transaksi
+offset 5 rows fetch next 5 rows only
+
+select * from Transaksi
