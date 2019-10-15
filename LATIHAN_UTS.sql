@@ -1,16 +1,3 @@
-USE Petcare
-
-SELECT * FROM Dokter
-SELECT * FROM Hewan
-SELECT * FROM MakananHewan
-SELECT * FROM Obat
-SELECT * FROM Pelanggan
-SELECT * FROM Pemeriksaan
-SELECT * FROM StrukPembayaran
-SELECT * FROM Transaksi
-SELECT * FROM Vitamin
-
-
 --pengambilan data yang tanpa null
 SELECT * FROM Dokter
 WHERE email IS NOT NULL; 
@@ -76,7 +63,7 @@ inner join Pelanggan as p on p.id_pelanggan = st.id_pelanggan
 order by t.tanggal_transaksi desc;
 
 --menselect customer yang tidak pernah membeli
-select isnull(p.nama_depan,' ')+' '+isnull(p.nama_belakang,' ') as nama_pelanggan,sp.id_transaksi
+select p.id_pelanggan,isnull(p.nama_depan,' ')+' '+isnull(p.nama_belakang,' ') as nama_pelanggan,sp.id_transaksi
 from Pelanggan as p
 left join StrukPembayaran as sp on sp.id_pelanggan = p.id_pelanggan
 where sp.id_transaksi is null
@@ -87,3 +74,103 @@ order by id_transaksi
 offset 5 rows fetch next 5 rows only
 
 select * from Transaksi
+
+
+--memilih nama dokter urut desc
+select isnull(d.nama_depan,' ')+' '+isnull(d.nama_belakang,' ') as Nama 
+from Dokter as d
+ORDER by Nama ASC
+
+--Fetch Next 5 
+select d.id_dokter,isnull(d.nama_depan,' ')+' '+isnull(d.nama_belakang,' ') as Nama 
+from Dokter as d
+ORDER by Nama ASC
+OFFSET 5 ROWS
+FETCH NEXT 5 ROWS ONLY
+
+--join table view pelanggan yang melakukan transaksi
+select t.id_transaksi,isnull(p.nama_depan,' ')+' '+isnull(p.nama_belakang,' ') as Nama 
+FROM Pelanggan as p
+INNER JOIN StrukPembayaran as sp on sp.id_pelanggan = p.id_pelanggan
+INNER JOIN Transaksi as t on sp.id_transaksi = t.id_transaksi
+
+--sorting name pelanggan
+select p.id_pelanggan,isnull(p.nama_depan,' ')+' '+isnull(p.nama_belakang,' ') as Nama,p.alamat
+from Pelanggan as p
+ORDER BY Nama ASC;
+
+--self join
+select t.id_transaksi,p.id_pelanggan,isnull(p.nama_depan,' ')+' '+isnull(p.nama_belakang,' ') as Nama
+from Pelanggan as p
+inner join StrukPembayaran sp on sp.id_pelanggan = p.id_pelanggan
+inner join Transaksi as t on t.id_transaksi = sp.id_transaksi
+
+--order by subject desc
+select d.id_dokter,isnull(d.nama_depan,' ')+' '+isnull(d.nama_belakang, ' ') as Nama
+from Dokter as d
+order by Nama DESC
+
+--offset fetch
+select d.id_dokter,isnull(d.nama_depan,' ')+' '+isnull(d.nama_belakang, ' ') as Nama
+from Dokter as d
+order by Nama DESC
+offset 5 rows
+fetch next 5 rows only
+
+
+--convert
+select CONVERT(varchar, pem.tanggal_pemeriksaan) as DATE,
+DATENAME(MONTH,pem.tanggal_pemeriksaan) as monthname
+from Pemeriksaan as pem
+
+--concat data
+select p.nama_depan+('-')+p.nama_belakang+('-')+p.alamat as concatdata ,
+LEN(REPLACE(p.nama_depan+('-')+p.nama_belakang+('-')+p.alamat,'A',' ')) as numberofa
+from Pelanggan as p
+
+--where query
+select d.id_dokter,d.nama_depan 
+from Dokter as d
+where d.id_dokter > 1500000;
+
+select * from Transaksi
+
+select t.id_transaksi,t.id_pemeriksaan 
+from Transaksi as t
+where t.id_transaksi>25000000;
+
+--group having query
+select penggunaan_obat, harga from Obat
+group by penggunaan_obat, harga
+having harga > 20000
+
+--select sum total duit transaksi
+Select total.TotalTransaksi
+FROM(Select sum(t.total_harga)as TotalTransaksi 
+from Transaksi as T)
+as total
+
+--select avg total transaksi
+Select total.AVGtransaksi
+FROM(Select avg(t.total_harga)as AVGtransaksi
+from Transaksi as T)
+as total
+
+--except 
+select id_pelanggan
+from Pelanggan
+except
+select id_pelanggan
+from StrukPembayaran
+
+--max
+select max(total_harga) as TransaksiHargaTertinggi
+from Transaksi
+
+--top
+select top(5) total_harga
+from Transaksi
+order by total_harga desc
+
+
+--union
