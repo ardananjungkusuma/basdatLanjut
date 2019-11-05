@@ -29,7 +29,7 @@ where orderRankNo <= 2
 with
     RowsOrderBY
     as
-    
+
     (
         select sov.orderid, sov.orderdate, ROW_NUMBER() over(order by sov.orderdate, sov.orderid) as rowno, val
         from Sales.OrderValues as sov
