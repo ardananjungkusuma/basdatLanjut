@@ -1,30 +1,36 @@
 
 --1
-SELECT
+ SELECT
 	name ,
 	database_id,
 	create_date
-	
 FROM
-     sys.databases
-
---2
+	sys.databases
+	--2
 
 --3
+ SELECT
+	st.object_id,
+	st.name,
+	ss.name,
+	st.type,
+	st.type_desc,
+	st.create_date,
+	st.modify_date
+FROM
+	sys.tables as st
+LEFT JOIN sys.schemas ss on
+	st.schema_id = ss.schema_id;
 
---4
+	--4
+SELECT COLUMN_NAME,DATA_TYPE,COLLATION_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME='Sales.Customers'; --belum
 
---5
-
---6
-
---7
-
---8
-
---9
-
---10
+	--5
+	--6
+	--7
+	--8
+	--9
+	--10
 
 --11
  SELECT
