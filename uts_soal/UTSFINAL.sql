@@ -1,3 +1,12 @@
+SELECT * FROM dbo.Dokter
+SELECT * FROM dbo.Hewan
+SELECT * FROM dbo.MakananHewan
+SELECT * FROM dbo.Obat
+SELECT * FROM dbo.Pelanggan
+SELECT * FROM dbo.Pemeriksaan
+SELECT * FROM dbo.StrukPembayaran
+SELECT * FROM dbo.Transaksi
+SELECT * FROM dbo.Vitamin
 --1
 select p.id_pelanggan,p.nama_depan,p.alamat 
 from Pelanggan as p

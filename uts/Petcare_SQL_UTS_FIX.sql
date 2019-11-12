@@ -1,4 +1,6 @@
-USE [master]
+CREATE DATABASE [Petcare] /*Create First*/
+USE [Petcare] /*Use SQL*/
+
 GO
 /****** Object:  Database [Petcare]    Script Date: 22/10/2019 02:26:19 ******/
 CREATE DATABASE [Petcare]
@@ -8,6 +10,9 @@ CREATE DATABASE [Petcare]
  LOG ON 
 ( NAME = N'Petcare_log', FILENAME = N'G:\Microsoft SQL Server\MSSQL14.MSSQLSERVER\MSSQL\DATA\Petcare_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
 GO
+
+
+/*Execution From Here*/
 ALTER DATABASE [Petcare] SET COMPATIBILITY_LEVEL = 140
 GO
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
