@@ -158,3 +158,74 @@ BEGIN CATCH
     PRINT 'Error Message: '+ CAST(ERROR_MESSAGE() AS varchar);
 END CATCH
 GO
+
+--18
+DECLARE @num varchar(20) = 'A';
+BEGIN TRY
+    PRINT 5. / CAST (@num AS numeric(10,4));
+END TRY
+BEGIN CATCH
+    IF CAST(ERROR_NUMBER() AS varchar) = 245 OR CAST(ERROR_NUMBER() AS varchar) = 8114
+        PRINT 'Handling conversion error...';
+    ELSE
+        PRINT 'Handling NON conversion error...';
+    PRINT 'Error Number: '+ CAST(ERROR_NUMBER() AS varchar);
+    PRINT 'Error Message: '+ CAST(ERROR_MESSAGE() AS varchar);
+END CATCH
+GO
+
+--19
+CREATE PROCEDURE dbo.GetErrorInfo
+AS
+PRINT 'Error Number: ' + CAST(ERROR_NUMBER() AS varchar(10));
+PRINT 'Error Message: ' + ERROR_MESSAGE();
+PRINT 'Error Severity: ' + CAST(ERROR_SEVERITY() AS varchar(10));
+PRINT 'Error State: ' + CAST(ERROR_STATE() AS varchar(10));
+PRINT 'Error Line: ' + CAST(ERROR_LINE() AS varchar(10));
+PRINT 'Error Proc: ' + COALESCE(ERROR_PROCEDURE(),'Not within procedure');
+GO
+
+DECLARE @num varchar(20) = '0';
+BEGIN TRY
+    PRINT 5. / CAST (@num AS numeric(10,4));
+END TRY
+BEGIN CATCH
+    EXEC dbo.GetErrorInfo;
+END CATCH
+GO
+
+--20
+DECLARE @num varchar(20) = '0';
+BEGIN TRY
+    PRINT 5 / CAST (@num AS numeric(10,4));
+END TRY
+BEGIN CATCH
+    EXEC dbo.GetErrorInfo;
+    THROW;
+END CATCH
+GO
+
+--21
+DECLARE @num varchar(20) = 'A';
+BEGIN TRY
+    PRINT 5 / CAST (@num AS numeric);
+END TRY
+BEGIN CATCH
+    EXEC dbo.GetErrorInfo;
+    IF CAST(ERROR_NUMBER() AS VARCHAR) = 8134
+        PRINT 'Handling division by zero...';
+    ELSE
+        PRINT 'Throwing original error...';
+    THROW;
+END CATCH
+
+--22
+DECLARE @msg AS varchar(2048);
+SET @msg = 'Anda sedang mengerjakan Jobsheet 14 pada ' + 
+    FORMAT(CURRENT_TIMESTAMP, 'MMMM d, yyyy','en-US') + '. Ini bukan error, bosque';
+THROW 50001, @msg, 1;
+
+--DROPPING all Procedure
+DROP PROCEDURE Sales.CheckPersonBirthDate;
+-- Praktikum 7 Langkah 1
+DROP PROCEDURE dbo.GetErrorInfo;
